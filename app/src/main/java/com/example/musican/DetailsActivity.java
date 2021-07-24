@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static com.example.musican.Constants.MUSICINDEX;
+import static com.example.musican.Constants.MUSICLIST;
+
 
 public class DetailsActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
@@ -21,8 +24,8 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
         Bundle b = this.getIntent().getExtras();
-        ArrayList<Music> musics = b.getParcelableArrayList("musics");
-        int index = b.getInt("index");
+        ArrayList<Music> musics = b.getParcelableArrayList(MUSICLIST);
+        int index = b.getInt(MUSICINDEX);
 
         getSupportActionBar().setTitle(musics.get(index).getSongArtist());
 
@@ -81,6 +84,4 @@ public class DetailsActivity extends AppCompatActivity {
         super.onStop();
         releaseMediaPlayer();
     }
-
-
 }

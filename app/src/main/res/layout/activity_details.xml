@@ -75,7 +75,6 @@
             android:gravity="left"
             android:textStyle="italic" />
     </LinearLayout>
-
 </ScrollView>
 
 

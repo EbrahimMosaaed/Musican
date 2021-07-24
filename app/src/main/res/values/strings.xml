@@ -80,4 +80,6 @@
     <string name="song_title">Song title:</string>
     <string name="song_artist">Song artist:</string>
     <string name="song_lyrics">Song lyrics:</string>
+
+    <string name="home_txt">All Musics</string>
 </resources>
