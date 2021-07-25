@@ -11,7 +11,7 @@
         android:layout_width="@dimen/minHeight"
         android:layout_height="@dimen/minHeight"
         android:paddingRight="8dp"
-        android:src="@drawable/logo" />
+        android:src="@drawable/lo_ns" />
 
     <TextView
         android:id="@+id/song_artist"

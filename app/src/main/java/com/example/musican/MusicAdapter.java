@@ -7,21 +7,20 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.ArrayList;
 
 
- class MusicAdapter
+class MusicAdapter
         extends RecyclerView.Adapter<MusicViewHolder> {
 
-    List<Music> list = Collections.emptyList();
+    ArrayList<Music> musicList;
 
     Context context;
     ClickListiner listiner;
 
-    public MusicAdapter(List<Music> list,
+    public MusicAdapter(ArrayList<Music> music,
                         Context context, ClickListiner listiner) {
-        this.list = list;
+        this.musicList = music;
         this.context = context;
         this.listiner = listiner;
     }
@@ -29,6 +28,7 @@ import java.util.List;
     @Override
     public MusicViewHolder
     onCreateViewHolder(ViewGroup parent,
+
                        int viewType) {
 
         Context context
@@ -37,7 +37,6 @@ import java.util.List;
                 = LayoutInflater.from(context);
 
         // Inflate the layout
-
         View photoView
                 = inflater
                 .inflate(R.layout.list_item,
@@ -54,13 +53,13 @@ import java.util.List;
                      final int position) {
         final int index = viewHolder.getAdapterPosition();
         viewHolder.songImg
-                .setImageResource(list.get(position).getSongImg());
+                .setImageResource(musicList.get(position).getSongImg());
         viewHolder.songArtist
-                .setText(list.get(position).getSongArtist());
+                .setText(musicList.get(position).getSongArtist());
         viewHolder.songTitle
-                .setText(list.get(position).getSongTitle());
+                .setText(musicList.get(position).getSongTitle());
         viewHolder.songDuration
-                .setText(list.get(position).getSongDuration());
+                .setText(musicList.get(position).getSongDuration());
 
         viewHolder.view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +71,7 @@ import java.util.List;
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return musicList.size();
     }
 
     @Override
@@ -81,51 +80,4 @@ import java.util.List;
         super.onAttachedToRecyclerView(recyclerView);
     }
 
-
 }
-
-//
-//import android.content.Context;
-//import android.view.LayoutInflater;
-//import android.view.View;
-//import android.view.ViewGroup;
-//import android.widget.ArrayAdapter;
-//import android.widget.ImageView;
-//import android.widget.TextView;
-//
-//import androidx.annotation.NonNull;
-//
-//import java.util.ArrayList;
-//
-//public class MusicAdapter extends ArrayAdapter<Music> {
-//
-//    public MusicAdapter(Context context, ArrayList<Music> musics) {
-//        super(context, 0, musics);
-//    }
-//
-//    @NonNull
-//    @Override
-//    public View getView(int position, View convertView, ViewGroup parent) {
-//
-//        View listItemView = convertView;
-//        if (listItemView == null) {
-//            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
-//        }
-//
-//        Music currentMusic = getItem(position);
-//
-//        TextView songTitle = listItemView.findViewById(R.id.song_title);
-//        songTitle.setText(currentMusic.getSongTitle());
-//
-//
-//        TextView songArtist = listItemView.findViewById(R.id.song_artist);
-//        songArtist.setText(currentMusic.getSongArtist());
-//
-//        TextView songDuration = listItemView.findViewById(R.id.song_duration);
-//        songDuration.setText(currentMusic.getSongDuration());
-//
-//        ImageView songImage = listItemView.findViewById(R.id.song_img);
-//        songImage.setImageResource(currentMusic.getSongImg());
-//        return listItemView;
-//    }
-//}
